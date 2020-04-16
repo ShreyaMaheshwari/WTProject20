@@ -6,6 +6,8 @@ import { FormGroup, FormControl, ReactiveFormsModule, EmailValidator } from '@an
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
 import {DispHobby} from '../disp_hobby/disp_hobby.component';
 @Component({
   selector: 'hobby',

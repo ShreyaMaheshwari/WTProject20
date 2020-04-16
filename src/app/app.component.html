@@ -22,8 +22,32 @@
           <a *ngIf="!show() && show1()" routerLink='/studentprofile' class='nav-link'><i>Profile</i></a>
         </li>
         <li>
-          <a *ngIf="!show() && show1()" class='nav-link'><i>Dummy2</i></a>
+          <a *ngIf="show() || show1()" class='nav-link'>
+
+           <!--- <i>Dummy2</i>-->
+           <mat-search-bar [(ngModel)]="searchText"
+              [matAutocomplete]="simpleAuto"
+            ></mat-search-bar>
+
+             <mat-autocomplete #simpleAuto="matAutocomplete">
+              <mat-option *ngFor="let option of this.serverData2 | filter: searchText" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+
+
+          </a>
         </li>
+        <li>
+          <a *ngIf="show() || show1()" class='nav-link'>
+
+             <i (click) = "searchevent()">Find Event</i>
+
+
+          </a>
+        </li>
+
+
         <!-- Till here, after this logout should be present in both -->
         <li>
           <a *ngIf="show() || show1()" routerLink='/' class='nav-link'><i (click)="setempty()">Logout</i></a>

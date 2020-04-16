@@ -3,6 +3,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'disp-hobby',
