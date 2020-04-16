@@ -42,6 +42,23 @@ def getEid():
   print(res)
   return jsonify(res)
 
+@app.route("/student/fetchhobbies", methods=["POST"])
+def ghob():
+  s_id=request.get_json()['student_id']
+  database = r"pythonsqlite.db"
+  conn = create_connection(database)
+  q="select hobby from hobbies where s_id=" + str(s_id) + ";"
+  cur = conn.cursor()
+  res=cur.execute(q)
+  res=list(res)
+  print (res)
+  final=set()
+  for row in res:
+    final.add(row[0])
+  final=list(final)
+
+  return jsonify(final),200
+
 @app.route('/student/hobby',methods=["POST"])
 def hobby():
   s_id = request.get_json()["s_id"]
@@ -50,7 +67,18 @@ def hobby():
   database = r"pythonsqlite.db"
   conn = create_connection(database)
   c = conn.cursor()
+  query="select hobby from hobbies where s_id=" + str(s_id) + ";"
+  res=c.execute(query)
+  res=list(res)
+  prev=[]
+  for row in res:
+    prev.append(row[0])
+  tobeadded=[]
   for ele in interests:
+    if str(ele) not in prev:
+      tobeadded.append(str(ele))
+
+  for ele in tobeadded:
     q = "INSERT INTO hobbies(s_id,hobby) VALUES (" + str(s_id) + ", '" + str(ele) + "');"
     print(q)
     c.execute(q)
@@ -61,6 +89,7 @@ def hobby():
 @app.route("/")
 def hello():
     return jsonify({'text':'Hello World!'})
+
 
 @app.route("/checkuser", methods=["POST"])
 def check():
