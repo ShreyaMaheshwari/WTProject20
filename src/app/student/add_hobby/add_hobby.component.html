@@ -1,0 +1,12 @@
+<h2> List of hobbies! </h2>
+
+  <mat-checkbox [(ngModel)]="cChecked" (change)="onCheckboxChagen($event, 'Culnery')">Culnery</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="mChecked" (change)="onCheckboxChagen($event, 'Music')">Music</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="dChecked" (change)="onCheckboxChagen($event, 'Dance')">Dance</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="pChecked" (change)="onCheckboxChagen($event, 'Photography')">Photography</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="sChecked" (change)="onCheckboxChagen($event, 'Sports')">Sports</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="wChecked" (change)="onCheckboxChagen($event, 'Writing')">Writing</mat-checkbox> <br>
+  <mat-checkbox [(ngModel)]="aChecked" (change)="onCheckboxChagen($event, 'Art')">Art</mat-checkbox> <br>
+  <!-- <input type="checkbox"> bitch </input> -->
+  <br> <br>
+  <button mat-button type="submit" (click)="disp_hobby()">Submit</button>
