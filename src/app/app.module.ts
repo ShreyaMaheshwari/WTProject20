@@ -10,11 +10,7 @@ import {DialogOverviewExampleDialog} from './organiser/allocate_funds/allocate_f
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 
 
 import { AppComponent } from './app.component';
@@ -40,9 +36,6 @@ import { EventDet } from './student/event_details/event_details.component';
 import { DispOrg } from './student/display_org/display_org.component';
 import { TeamInput } from './student/team_input/team_input.component';
 import { AfterReg } from './student/after_reg/after_reg.component';
-import {FilterPipe} from './filter.pipe';
-import {DispHobby} from './student/disp_hobby/disp_hobby.component';
-import { AddHobby } from './student/add_hobby/add_hobby.component';
 
 
 
@@ -63,7 +56,6 @@ const routes: Routes = [
   {path:'teaminp',component: TeamInput},
   {path:'afterreg',component: AfterReg},
   {path: 'eventdet', component: EventDet},
-  {path: 'addhobby',component: AddHobby}
 ]
 
 @NgModule({
@@ -87,11 +79,7 @@ const routes: Routes = [
     EventDet,
     DispOrg,
     AfterReg,
-    TeamInput,
-    FilterPipe,
-    AddHobby,
-    DispHobby,
-
+    TeamInput
   ],
   imports: [
     BrowserModule,
@@ -108,10 +96,7 @@ const routes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatButtonModule,
-    NgMatSearchBarModule,
-    MatAutocompleteModule,
-    MatCheckboxModule
+    MatButtonModule
   ],
   providers: [StudentService, OrganiserService],
   bootstrap: [AppComponent]

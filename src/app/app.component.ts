@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { StudentService } from './student.service';
 import { ProfileComponent } from './profile/profile.component';
 import {OrganiserService} from './organiser.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +15,8 @@ export class AppComponent {
   message: object;
   serverData: JSON;
   message1: object;
-  searchText: string;
-  serverData2: string[];
-  serverData3: object;
 
-  constructor(private httpClient: HttpClient, private organiser: OrganiserService, private student: StudentService, public router: Router) {
+  constructor(private httpClient: HttpClient, private organiser: OrganiserService, private student: StudentService) {
     this.organiser.currentMessage.subscribe(message => {this.message = message; console.log(this.message); });
     this.student.currentMessage.subscribe(message1 => {this.message = message1; console.log(this.message); });
   }
@@ -28,10 +24,6 @@ export class AppComponent {
   ngOnInit() {
     this.message = {}
     this.message1 = {}
-    this.httpClient.get('http://127.0.0.1:5000/student/events',).subscribe(data => {
-      this.serverData2 = data as string[];
-
-      console.log(this.serverData2)});
   }
 
   show() {
@@ -55,20 +47,5 @@ export class AppComponent {
     }
     else
       return false;
-  }
-  searchevent()
-  {
-    this.httpClient.post('http://127.0.0.1:5000/student/searchevents',{'name':this.searchText}).subscribe(data => {
-      this.serverData3 = data as JSON;
-      var bleh = this.serverData3[0][0];
-      console.log(bleh);
-      this.message["e_id"] = bleh ;
-      this.message["o_id"] = this.serverData3[0][1]
-      this.student.changeMessage(this.message);
-      console.log("works");
-      this.router.navigateByUrl("/eventdet");
-      //console.log(this.serverData4);
-    });
-
   }
 }

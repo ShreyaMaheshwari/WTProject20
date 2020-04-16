@@ -2,7 +2,7 @@
   <div class="col-md-3 mt-5 mx-auto center">
     <div class="jumbotron">
 <h3 class="h3 mb-3 font-weight-normal">Register</h3>
-<form [formGroup]="infoForm" (submit)="newUser()">
+<form [formGroup]="infoForm">
   <mat-form-field appearance="null">
   <mat-label for="first_name">First Name:</mat-label>
   <input matInput formControlName="first_name" type="text" id="first_name" name="first_name" required>
@@ -15,7 +15,7 @@
   <br>
   <mat-form-field appearance="null">
   <mat-label for="email">Email:</mat-label>
-  <input matInput (change)="messdis()" formControlName="email" type="email" id="email" name="email" required><br>
+  <input matInput (click)="messdis()" formControlName="email" type="email" id="email" name="email" required><br>
   </mat-form-field>
   <br>
   <mat-form-field appearance="null">
@@ -29,7 +29,7 @@
   </mat-form-field>
   <br>
   <div *ngIf="message"> {{message}} <a routerLink='/login' *ngIf="show">Proceed to Login</a> </div>
-  <button mat-button class="btn waves-effect waves-light" type="submit" ng-disable="infoForm.$invalid">Submit</button>
+  <button  (click)="newUser()" mat-button class="btn waves-effect waves-light" type="submit" ng-disabled="infoForm.$invalid">Submit</button>
 </form>
 </div>
 </div>

@@ -82,8 +82,7 @@ export class ShomeComponent implements OnInit {
   }
 
   get_events() {
-    this.router.navigateByUrl('/addhobby');
-    //this.router.navigateByUrl('/dispevents');
+    this.router.navigateByUrl('/dispevents');
     };
   add_hobby()
   {
